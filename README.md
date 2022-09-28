@@ -1,10 +1,22 @@
 # karyana_wala
 
-A new Flutter project.
+A multi app buying & selling platform for users with stuff to sell!
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+# Note
+    make sure your Android studio & flutter dart are up-to-date and ready to go!
+
+    1. clone the repo `git clone https://github.com/Iamabdulquddus/karyana-wala`
+    2. get all dependencies `flutter pub get` (you'll need flutter dart installed too.
+    3. start forking/contributing by creating other branch `git branch <your-name>`
+    4. push changes for review `git push `
+    5. pull all the changes `git pull https://github.com/Iamabdulquddus/karyana-wala`
+
+
+# Assets
+    all assets and media files are stored in `./assets` folder
+----------------------------------------------------------------------------------
 
 A few resources to get you started if this is your first Flutter project:
 
