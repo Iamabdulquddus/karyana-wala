@@ -19,20 +19,22 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 5),
             /// using Getx to go to every route in the app
-            ()=> Get.toNamed(MyRoutes.getHomeRoute()),
+            ()=> Get.toNamed(MyRoutes.getWelcome()),
     );
   }
   @override
   Widget build(BuildContext context) {
     /// making the app responsive with MediaQuery... well for app its less stress ... to do responsiveness...
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
-        width: size.width,
-        height: size.height,
-        decoration: BoxDecoration(
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          width: size.width,
+          height: size.height,
+          decoration: BoxDecoration(
+          ),
+          child:  Lottie.asset(splashLottie),
         ),
-        child:  Lottie.asset(splashLottie),
       ),
     );
   }

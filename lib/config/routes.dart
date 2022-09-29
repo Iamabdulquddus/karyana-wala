@@ -5,15 +5,19 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import '../pages/home/home.dart';
 import '../pages/splash/splash.dart';
+import '../pages/welcome/onboarding.dart';
+import '../pages/welcome/welcome.dart';
 
 class MyRoutes {
   ///views routes***************
   static String home = '/home';
   static String splash = '/splash';
+  static String welcome = '/welcome';
 
   ///***********get routes******************************************
   static String getHomeRoute() => home;
   static String getSplashRoute() => splash;
+  static String getWelcome() => welcome;
 
   /// *********************GetPage********************************************
   static List<GetPage> appRoutes() => [
@@ -27,6 +31,13 @@ class MyRoutes {
         GetPage(
           name: splash,
           page: () => SplashScreen(),
+          middlewares: [MyMiddleware()],
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: welcome,
+          page: () => Welcome(),
           middlewares: [MyMiddleware()],
           transition: Transition.leftToRightWithFade,
           transitionDuration: Duration(milliseconds: 500),
