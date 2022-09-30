@@ -22,6 +22,6 @@ class Palette {
 
 const primary = Color(0xff65737e);
 const primaryText = Color(0xff373D43);
-const lightRedColor = Color(0xffBCC2C8);
+const lightColor = Color(0xffBCC2C8);
 const wWhiteColor = Colors.white;
 const wDarkBlackColor = Colors.black;

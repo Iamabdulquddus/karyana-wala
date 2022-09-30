@@ -30,7 +30,7 @@ List<Widget> pages = [
             ),
           )),
       Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Text(
           'Set Your Delivery Location',
           style: MyTextStyles.sectionTitleSmallPrimary,
@@ -106,7 +106,7 @@ class _OnBoardingState extends State<OnBoarding> {
         ),
         Padding(
           padding: EdgeInsets.symmetric(
-            vertical: 20,
+            vertical: 10,
           ),
           child: DotsIndicator(
             dotsCount: pages.length,

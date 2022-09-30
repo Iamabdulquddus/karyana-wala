@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "251765835748",
+    "project_id": "karyana-957ab",
+    "storage_bucket": "karyana-957ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251765835748:android:cfbb32225ee3207b2129f1",
+        "android_client_info": {
+          "package_name": "com.example.karyana_wala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251765835748-dvkhpl3p1d4pud0rj23oe7bh0qaghp70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.karyana_wala",
+            "certificate_hash": "53c31e0f7ae3e1a585262063e8dcf01e5769b857"
+          }
+        },
+        {
+          "client_id": "251765835748-dkqd01lsifjca8s00it4tvrvl394kjuc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZnuzZH690ra1alnMr4O8m-AcSMYKc7do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251765835748-dkqd01lsifjca8s00it4tvrvl394kjuc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
