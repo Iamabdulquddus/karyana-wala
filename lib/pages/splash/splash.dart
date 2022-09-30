@@ -17,9 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5),
+    Timer(const Duration(seconds: 3),
             /// using Getx to go to every route in the app
-            ()=> Get.toNamed(MyRoutes.getWelcome()),
+            ()=> Get.offAllNamed(MyRoutes.getWelcome()),
     );
   }
   @override
