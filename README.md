@@ -6,6 +6,7 @@ A multi app buying & selling platform for users with stuff to sell!
 
 # Note
     make sure your Android studio & flutter dart are up-to-date and ready to go!
+    Java 11 or higher is required ➕ android version should be 2021 or higher
 
     1. clone the repo `git clone https://github.com/Iamabdulquddus/karyana-wala`
     2. get all dependencies `flutter pub get` (you'll need flutter dart installed too.
@@ -16,6 +17,7 @@ A multi app buying & selling platform for users with stuff to sell!
 
 # Assets
     all assets and media files are stored in `./assets` folder
+    
 ----------------------------------------------------------------------------------
 
 A few resources to get you started if this is your first Flutter project:
