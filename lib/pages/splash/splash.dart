@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:karyana_wala/config/routes.dart';
@@ -18,8 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3),
-            /// using Getx to go to every route in the app
-            ()=> Get.offAllNamed(MyRoutes.getWelcome()),
+            () {
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if(user == null){
+          Get.offAllNamed(MyRoutes.getWelcome());
+        }
+        else{
+          Get.offAllNamed(MyRoutes.getHomeRoute());
+        }
+      });
+
+            },
     );
   }
   @override

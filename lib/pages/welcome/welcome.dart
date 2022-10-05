@@ -1,93 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:karyana_wala/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/styles.dart';
 import 'onboarding.dart';
 
 class Welcome extends StatelessWidget {
-   Welcome({Key? key}) : super(key: key);
+   const Welcome({Key? key}) : super(key: key);
 
- bool validPhoneNumber = false;
-
-  void showBottomSheet(context) {
-    showModalBottomSheet(
-
-      context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, StateSetter myState) => Container(
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
-          ),
-          child: Column(
-            children: [
-              Text(
-                'Login',
-                style: MyTextStyles.sectionTitleSmallPrimary,
-              ),
-              Text(
-                'Enter your phone number to process',
-                style: MyTextStyles.regularBlack,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                autofocus: true,
-                maxLength: 10,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  counterStyle: TextStyle(
-                    height: double.minPositive,
-                  ),
-                  counterText: "",
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(),
-                  prefixText: '+92',
-                  labelText: 'Phone Number',
-                ),
-                onChanged: (value){
-                  if(value == 10 ){
-                   myState((){
-                     validPhoneNumber = true;
-                   });
-                  }else {
-                    myState((){
-                      validPhoneNumber = false;
-                    });
-                  }
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: AbsorbPointer(
-                      absorbing: validPhoneNumber ? false: true,
-                      child: TextButton(
-                        style: TextButton.styleFrom(backgroundColor: validPhoneNumber? lightColor : primaryText),
-                        onPressed: () {},
-                        child: Text(
-                         validPhoneNumber? 'continue' : 'ENTER PHONE NUMBER ',
-                          style: MyTextStyles.subHeadingWhite,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
+
+    final auth = Provider.of<AuthProvider>(context);
+
+    var validPhoneNumber = false;
+    var phoneNumberController = TextEditingController();
+
+    void showBottomSheet(context) {
+      showModalBottomSheet (
+
+        context: context,
+        builder: (context) => StatefulBuilder(
+          builder: (context, StateSetter myState) => Container(
+            padding: const EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  'Login',
+                  style: MyTextStyles.sectionTitleSmallPrimary,
+                ),
+                Text(
+                  'Enter your phone number to process',
+                  style: MyTextStyles.regularBlack,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  controller: phoneNumberController,
+                  autofocus: true,
+                  maxLength: 10,
+                  keyboardType: TextInputType.phone,
+                  decoration: const InputDecoration(
+                    counterStyle: TextStyle(
+                      height: double.minPositive,
+                    ),
+                    counterText: "",
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    prefixText: '+92',
+                    labelText: 'Phone Number',
+                  ),
+                  onChanged: (value){
+                    if(value.length == 10){
+                      myState((){
+                         validPhoneNumber = true;
+                      });
+                    }else {
+                      myState((){
+                        validPhoneNumber = false;
+                      });
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: AbsorbPointer(
+                        absorbing: validPhoneNumber ? false : true,
+                        child: TextButton(
+                          style: TextButton.styleFrom(backgroundColor: validPhoneNumber ?  primaryText : lightColor),
+                          onPressed: () {
+                            String number = "+92${phoneNumberController.text}";
+                            auth.verifyPhone(context, number);
+                          },
+                          child: Text(
+                            validPhoneNumber ? 'continue' : 'ENTER PHONE NUMBER ',
+                            style: MyTextStyles.subHeadingWhite,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return SafeArea(
         child: Scaffold(
       body: Column(
@@ -95,7 +106,7 @@ class Welcome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(),
+              const SizedBox(),
               TextButton(
                 onPressed: () {},
                 child: Text(
@@ -105,15 +116,15 @@ class Welcome extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(child: OnBoarding()),
+          const Expanded(child: OnBoarding()),
           // SizedBox(height: 10,),
-          Text('Ready to order from your nearest shop'),
-          SizedBox(
+          const Text('Ready to order from your nearest shop'),
+          const SizedBox(
             height: 10,
           ),
           ElevatedButton(
             onPressed: () {},
-            child: Text('Delivery Location'),
+            child: const Text('Delivery Location'),
           ),
 
           TextButton(
@@ -129,7 +140,7 @@ class Welcome extends StatelessWidget {
                       text: 'Login', style: MyTextStyles.headingSmallPrimary)
                 ]),
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],
