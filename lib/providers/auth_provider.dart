@@ -1,17 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:karyana_wala/services/user_services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../config/routes.dart';
+import '../widgets/showSnackbar.dart';
 
-class AuthProvider  with ChangeNotifier{
-
+class AuthProvider with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String smsOtp, verificationId;
   String error = '';
   final UserServices _userServices = UserServices();
+
+
 
   Future<void> verifyPhone (BuildContext context , String number) async {
 
@@ -20,15 +23,15 @@ class AuthProvider  with ChangeNotifier{
     }
 
     verificationFailed(FirebaseAuthException e) {
-      print(e.code);
+      showSnackBar(context, e.message!);
     }
 
-    final PhoneCodeSent smsOtpSend = (String verId, int resendToken) async {
+    smsOtpSend(String verId, int? resendToken) async {
       verificationId = verId;
 
       smsOtpDialog(context, number);
 
-    } as PhoneCodeSent;
+    }
 
     try{
       _auth.verifyPhoneNumber(
@@ -71,7 +74,7 @@ class AuthProvider  with ChangeNotifier{
                 PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsOtp);
 
             final User? user =     (await _auth.signInWithCredential(credential)).user;
-            
+
             _createUser(id: user!.uid, number:  user.phoneNumber);
 
             if(user != null ){
@@ -83,6 +86,7 @@ class AuthProvider  with ChangeNotifier{
 
               }catch (e){
                 error = 'invalid otp';
+                notifyListeners();
                 print (e.toString());
                 Get.back();
               }
@@ -93,11 +97,10 @@ class AuthProvider  with ChangeNotifier{
     );
   }
 
-  void _createUser({required String id,  String? number}){
+  void _createUser({required String id, String? number}) {
     _userServices.createUserData({
-      "id" : id,
-      "number" :number,
+      "id": id,
+      "number": number,
     });
   }
-
 }
