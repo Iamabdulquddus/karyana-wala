@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../config/routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,11 +32,22 @@ class _HomePageState extends State<HomePage> {
         drawer: Drawer(),
         appBar: AppBar(
           title: Text(
-            'Mangwa Loo',
+            'Karyana Wala',
           ),
         ),
-        body: SingleChildScrollView(
-          child: Column(),
+        body: Column(
+          children: [
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut().then(
+                        (value) => Get.offAllNamed(MyRoutes.getWelcome()),
+                      );
+                },
+                child: Text('Sign out'),
+              ),
+            )
+           ],
         ),
       ),
     );

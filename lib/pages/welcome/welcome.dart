@@ -29,7 +29,21 @@ class Welcome extends StatelessWidget {
               borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Visibility(
+                  visible: auth.error == 'Invalid OTP' ? true : false,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(auth.error, style: MyTextStyles.regularBlack,),
+                        SizedBox(height: 4,),
+                      ],
+                    ),
+                  ),
+                ),
                 Text(
                   'Login',
                   style: MyTextStyles.sectionTitleSmallPrimary,
@@ -81,7 +95,9 @@ class Welcome extends StatelessWidget {
                           style: TextButton.styleFrom(backgroundColor: validPhoneNumber ?  primaryText : lightColor),
                           onPressed: () {
                             String number = "+92${phoneNumberController.text}";
-                            auth.verifyPhone(context, number);
+                            auth.verifyPhone(context, number).then((value) {
+                              phoneNumberController.clear();
+                            });
                           },
                           child: Text(
                             validPhoneNumber ? 'continue' : 'ENTER PHONE NUMBER ',
