@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:karyana_wala/providers/auth_provider.dart';
+import 'package:karyana_wala/providers/location_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:get/get.dart';
+import '../../config/routes.dart';
 import '../../constants/colors.dart';
 import '../../constants/styles.dart';
 import 'onboarding.dart';
@@ -115,6 +117,8 @@ class Welcome extends StatelessWidget {
       );
     }
 
+    final locationData = Provider.of<LocationProvider>(context, listen :false);
+
     return SafeArea(
         child: Scaffold(
       body: Column(
@@ -139,7 +143,11 @@ class Welcome extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () async{
+              locationData.getCurrentPosition().then((value) {
+                Get.toNamed(MyRoutes.getDeliveryMap());
+              });
+            },
             child: const Text('Delivery Location'),
           ),
 
