@@ -5,18 +5,22 @@ A multi app buying & selling platform for users with stuff to sell!
 ## Getting Started
 
 # Note
-    make sure your Android studio & flutter dart are up-to-date and ready to go!
-    Java 11 or higher is required ➕ android version should be 2021 or higher
+        make sure your Android studio & flutter dart are up-to-date and ready to go!
+        Java 11 or higher is required ➕ android version should be 2021 or higher
 
-    1. clone the repo `git clone https://github.com/Iamabdulquddus/karyana-wala`
-    2. get all dependencies `flutter pub get` (you'll need flutter dart installed too.
-    3. start forking/contributing by creating other branch `git branch <your-name>`
-    4. push changes for review `git push `
-    5. pull all the changes `git pull https://github.com/Iamabdulquddus/karyana-wala`
+        1. clone the repo `git clone https://github.com/Iamabdulquddus/karyana-wala`
+        
+        2. get all dependencies `flutter pub get` (you'll need flutter dart installed too.
+        
+        3. start forking/contributing by creating other branch `git branch <your-name>`
+        
+        4. push changes for review `git push `
+        
+        5. pull all the changes `git pull https://github.com/Iamabdulquddus/karyana-wala`
 
 
 # Assets
-    all assets and media files are stored in `./assets` folder
+     all assets and media files are stored in `./assets` folder
     
 ----------------------------------------------------------------------------------
 
