@@ -41,11 +41,11 @@ class MyTextStyles{
 
   //Primary Colors********************************
   static TextStyle sectionTitleLargePrimary = TextStyle(
-      color: primaryText,
+      color: secondary,
       fontSize: 36,
       fontWeight: FontWeight.bold);
   static TextStyle sectionTitleSmallPrimary = TextStyle(
-      color: primaryText,
+      color: secondary,
       fontSize: 24,
       fontWeight: FontWeight.bold);
 
@@ -53,28 +53,28 @@ class MyTextStyles{
 
   static TextStyle headingLargePrimary = TextStyle(
     fontSize: 20,
-    color: primaryText,
+    color: secondary,
     fontWeight: FontWeight.bold,
   );
 
   static TextStyle headingSmallPrimary =TextStyle(
     fontSize: 16,
-    color: primaryText,
+    color: secondary,
     fontWeight: FontWeight.bold,
   );
 
   static TextStyle subHeadingPrimary = TextStyle(
-    color: primaryText, fontSize: 14,
+    color: secondary, fontSize: 14,
   );
 
   static TextStyle regularPrimary =TextStyle(
     fontSize: 12,
-    color: primaryText,
+    color: secondary,
   );
 
   static TextStyle xSmallPrimary =TextStyle(
     fontSize: 12,
-    color: primaryText,
+    color: secondary,
   );
 
 

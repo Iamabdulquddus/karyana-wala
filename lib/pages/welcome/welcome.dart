@@ -9,26 +9,26 @@ import '../../constants/styles.dart';
 import 'onboarding.dart';
 
 class Welcome extends StatelessWidget {
-   const Welcome({Key? key}) : super(key: key);
-
+  const Welcome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     final auth = Provider.of<AuthProvider>(context);
 
     var validPhoneNumber = false;
     var phoneNumberController = TextEditingController();
 
     void showBottomSheet(context) {
-      showModalBottomSheet (
-
+      showModalBottomSheet(
         context: context,
         builder: (context) => StatefulBuilder(
           builder: (context, StateSetter myState) => Container(
             padding: const EdgeInsets.all(20),
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+              ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,8 +40,13 @@ class Welcome extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(auth.error, style: MyTextStyles.regularBlack,),
-                        SizedBox(height: 4,),
+                        Text(
+                          auth.error,
+                          style: MyTextStyles.regularBlack,
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
                       ],
                     ),
                   ),
@@ -73,13 +78,13 @@ class Welcome extends StatelessWidget {
                     prefixText: '+92',
                     labelText: 'Phone Number',
                   ),
-                  onChanged: (value){
-                    if(value.length == 10){
-                      myState((){
-                         validPhoneNumber = true;
+                  onChanged: (value) {
+                    if (value.length == 10) {
+                      myState(() {
+                        validPhoneNumber = true;
                       });
-                    }else {
-                      myState((){
+                    } else {
+                      myState(() {
                         validPhoneNumber = false;
                       });
                     }
@@ -94,7 +99,9 @@ class Welcome extends StatelessWidget {
                       child: AbsorbPointer(
                         absorbing: validPhoneNumber ? false : true,
                         child: TextButton(
-                          style: TextButton.styleFrom(backgroundColor: validPhoneNumber ?  primaryText : lightColor),
+                          style: TextButton.styleFrom(
+                              backgroundColor:
+                                  validPhoneNumber ? secondary : lightColor),
                           onPressed: () {
                             String number = "+92${phoneNumberController.text}";
                             auth.verifyPhone(context, number).then((value) {
@@ -102,7 +109,9 @@ class Welcome extends StatelessWidget {
                             });
                           },
                           child: Text(
-                            validPhoneNumber ? 'continue' : 'ENTER PHONE NUMBER ',
+                            validPhoneNumber
+                                ? 'continue'
+                                : 'ENTER PHONE NUMBER ',
                             style: MyTextStyles.subHeadingWhite,
                           ),
                         ),
@@ -117,7 +126,7 @@ class Welcome extends StatelessWidget {
       );
     }
 
-    final locationData = Provider.of<LocationProvider>(context, listen :false);
+    final locationData = Provider.of<LocationProvider>(context, listen: false);
 
     return SafeArea(
         child: Scaffold(
@@ -143,9 +152,10 @@ class Welcome extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () async{
+            onPressed: ()  {
               locationData.getCurrentPosition().then((value) {
                 Get.toNamed(MyRoutes.getDeliveryMap());
+                print ("location");
               });
             },
             child: const Text('Delivery Location'),
