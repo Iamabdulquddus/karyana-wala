@@ -9,9 +9,11 @@ class DeliveryMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locationData = Provider.of<LocationProvider>(context);
-    return Center(
-      child: Text('${locationData.longitude} :: ${locationData.latitude} '),
+    return Scaffold(
+      body: Center(
+        child: Text('${locationData.longitude} :: ${locationData.latitude} '),
 
+      ),
     );
   }
 }
