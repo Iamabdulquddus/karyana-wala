@@ -1,6 +1,6 @@
 # karyana_wala
 
-A multi app buying & selling platform for users with stuff to sell!
+A multi app buying  & selling platform for users with stuff to sell!
 
 ## Getting Started
 
